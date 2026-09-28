@@ -1,30 +1,25 @@
-# 📸 Guía Maestra de Organización y Reemplazo de Fotos (Plantilla HSC)
+# Guía de organización y reemplazo de fotos — HSC
 
-¡Hola! Esta plantilla ha sido diseñada para que reemplazar las fotos sea **tan fácil como en Canva o arrastrar y soltar**.
+Esta plantilla está organizada para que reemplazar las fotos sea directo y no requiera cambios de código.
 
 Todas las fotos están divididas en **carpetas ordenadas por servicio y proyecto**, con nombres claros y estándar (`foto-1.jpg`, `foto-2.jpg`, etc.). Además, en el código HTML de cada sección encontrarás comentarios claros que indican exactamente qué foto va en ese lugar.
 
 ---
 
-## 🚀 Método Rápido de Reemplazo (En 3 Pasos)
+## Método rápido de reemplazo
 
 1. **Ubica la carpeta** correspondiente al servicio o proyecto en `assets/images/`.
 2. **Nombra tu foto** exactamente igual al archivo que deseas reemplazar (por ejemplo, `foto-1.jpg`).
 3. **Pega o reemplaza el archivo** en esa carpeta.
-   - ¡Listo! Al refrescar tu navegador (`F5`), tu foto aparecerá inmediatamente en el sitio web sin necesidad de tocar una sola línea de código.
+   - Al actualizar el navegador (`F5`), la imagen se mostrará sin necesidad de tocar el código.
 
 ---
 
-## 🎯 Asistente Visual en la Web ("Modo Guía de Fotos")
-
-Dentro de la página web tienes dos herramientas visuales interactivas:
-
-1. **Botón en la barra superior:** `🎯 Activar Modo Guía de Fotos`. Al activarlo, sobre cada imagen en pantalla aparecerá una etiqueta azul con la ruta exacta de la carpeta y archivo. Si haces clic en la etiqueta, ¡se copia la ruta al portapapeles!
-2. **Botón flotante inferior derecho:** `📂 Asistente de Fotos`. Abre un panel lateral con la lista completa de todas las carpetas y archivos con botones para copiar sus rutas en un clic.
+Los comentarios junto a cada imagen en `index.html` indican su carpeta, archivo y uso previsto. Esta guía es el único mapa de reemplazo necesario; no hay controles internos expuestos en el sitio público.
 
 ---
 
-## 📂 Estructura Detallada de Carpetas y Fotos
+## Estructura de carpetas y fotos
 
 ### 1. Logo y Marca
 

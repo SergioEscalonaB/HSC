@@ -8,8 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initServiceTabs();
   initProjectFilters();
   initLightbox();
-  initContactForm();
-  initCounterAnimations();
   initImageFallbacks();
 });
 
@@ -90,14 +88,20 @@ function initServiceTabs() {
       const targetId = btn.getAttribute("data-target");
 
       // Update button active state
-      tabButtons.forEach((b) => b.classList.remove("active"));
+      tabButtons.forEach((b) => {
+        b.classList.remove("active");
+        b.setAttribute("aria-selected", "false");
+      });
       btn.classList.add("active");
+      btn.setAttribute("aria-selected", "true");
 
       // Show targeted pane
       tabPanes.forEach((pane) => {
         pane.classList.remove("active");
+        pane.hidden = true;
         if (pane.id === targetId) {
           pane.classList.add("active");
+          pane.hidden = false;
         }
       });
     });
@@ -116,8 +120,12 @@ function initProjectFilters() {
       const filterValue = btn.getAttribute("data-filter");
 
       // Update active state
-      filterBtns.forEach((b) => b.classList.remove("active"));
+      filterBtns.forEach((b) => {
+        b.classList.remove("active");
+        b.setAttribute("aria-pressed", "false");
+      });
       btn.classList.add("active");
+      btn.setAttribute("aria-pressed", "true");
 
       // Filter cards
       projectCards.forEach((card) => {
@@ -183,6 +191,7 @@ function initLightbox() {
           modalDesc.innerText = desc;
           modalPath.innerText = path;
           modal.classList.add("active");
+          modal.setAttribute("aria-hidden", "false");
           document.body.style.overflow = "hidden";
         }
       });
@@ -191,10 +200,11 @@ function initLightbox() {
   // Close modal
   function closeModal() {
     modal.classList.remove("active");
+    modal.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
   }
 
-  closeBtn.addEventListener("click", closeModal);
+  closeBtn?.addEventListener("click", closeModal);
   modal.addEventListener("click", (e) => {
     if (e.target === modal) closeModal();
   });
@@ -226,11 +236,9 @@ function initContactForm() {
     text += `*Teléfono:* ${phone}\n`;
     if (message) text += `*Mensaje:* ${message}\n`;
 
-    const encodedText = encodeURIComponent(text);
-    // WhatsApp number (Brochure phone: 034 233 4564 or international Colombian phone format +57)
-    const whatsappUrl = `https://wa.me/573001234567?text=${encodedText}`;
-
-    window.open(whatsappUrl, "_blank");
+    // El formulario permanece deshabilitado hasta contar con un canal
+    // corporativo confirmado. No envía ni almacena información del visitante.
+    console.info("Solicitud preparada; canal de contacto pendiente de confirmar.", text);
   });
 }
 
