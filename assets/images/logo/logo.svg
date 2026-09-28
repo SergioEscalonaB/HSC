@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" width="520" height="120">
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- H letter -->
+  <g fill="currentColor">
+    <path d="M 28,18 C 22,18 18,22 18,28 L 18,92 C 18,98 22,102 28,102 C 34,102 38,98 38,92 L 38,68 L 64,68 L 64,92 C 64,98 68,102 74,102 C 80,102 84,98 84,92 L 84,28 C 84,22 80,18 74,18 C 68,18 64,22 64,28 L 64,52 L 38,52 L 38,28 C 38,22 34,18 28,18 Z"/>
+    
+    <!-- S upper curve (Cyan) -->
+    <path d="M 124,18 C 145,18 158,32 158,49 C 158,62 148,70 134,74 C 122,70 118,60 123,50 C 126,44 133,40 140,42 C 137,36 130,34 122,36 C 117,32 119,22 124,18 Z" fill="#0284c7"/>
+    
+    <!-- S lower curve (White/Dark) -->
+    <path d="M 148,102 C 127,102 114,88 114,71 C 114,58 124,50 138,46 C 150,50 154,60 149,70 C 146,76 139,80 132,78 C 135,84 142,86 150,84 C 155,88 153,98 148,102 Z"/>
+    
+    <!-- C letter -->
+    <path d="M 226,35 C 221,24 209,18 194,18 C 172,18 158,34 158,60 C 158,86 172,102 194,102 C 209,102 221,96 226,85 C 230,77 222,71 216,74 C 210,77 203,83 194,83 C 182,83 176,73 176,60 C 176,47 182,37 194,37 C 203,37 210,43 216,46 C 222,49 230,43 226,35 Z"/>
+  </g>
+  
+  <!-- Subtext: Servicios, Suministros e Ingeniería -->
+  <g fill="#0284c7" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif" font-weight="700">
+    <text x="250" y="44" font-size="28" letter-spacing="-0.5">Servicios,</text>
+    <text x="250" y="74" font-size="28" letter-spacing="-0.5">Suministros</text>
+    <text x="250" y="104" font-size="28" letter-spacing="-0.5">e Ingeniería</text>
+  </g>
+</svg>

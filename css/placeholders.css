@@ -1,0 +1,291 @@
+/* ==========================================================================
+   CANVA-STYLE PLACEHOLDER & PHOTO REPLACEMENT GUIDE STYLES
+   Provides visual blueprint overlays, folder indicators, and fallback UI
+   ========================================================================== */
+
+/* The wrapper around every replaceable photo */
+.photo-slot {
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+/* Default subtle blueprint hover badge */
+.photo-slot .blueprint-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(7, 17, 30, 0.9);
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  color: var(--blue-300);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-family: monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  backdrop-filter: blur(8px);
+  z-index: 15;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: all var(--transition-fast);
+  pointer-events: none;
+}
+
+.photo-slot:hover .blueprint-badge {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   PHOTO GUIDE ACTIVE MODE (When user toggles "Modo Guía de Fotos")
+   ========================================================================== */
+body.photo-guide-active .photo-slot {
+  outline: 2px dashed #0284c7 !important;
+  outline-offset: -2px;
+  box-shadow: 0 0 16px rgba(2, 132, 199, 0.45) !important;
+}
+
+body.photo-guide-active .photo-slot .blueprint-badge {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  background: rgba(2, 132, 199, 0.95) !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  pointer-events: auto;
+}
+
+body.photo-guide-active .photo-slot .blueprint-badge::after {
+  content: ' (Clic para copiar ruta)';
+  font-size: 0.65rem;
+  opacity: 0.85;
+}
+
+/* Canva Blueprint Banner */
+.canva-guide-banner {
+  background: linear-gradient(135deg, #0284c7 0%, #0d233a 100%);
+  color: #ffffff;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  position: relative;
+  z-index: 900;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.canva-guide-banner strong {
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+/* Fallback Canva Frame (Shown if image is missing or placeholder mode) */
+.canva-empty-frame {
+  width: 100%;
+  height: 100%;
+  background: #73bdf8;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.canva-empty-frame .sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(180deg, #60a5fa 0%, #93c5fd 100%);
+}
+
+.canva-empty-frame .cloud {
+  position: absolute;
+  top: 20%;
+  width: 80px;
+  height: 35px;
+  background: #ffffff;
+  border-radius: 40px;
+  box-shadow: 20px -15px 0 10px #ffffff, 45px -5px 0 5px #ffffff;
+  opacity: 0.95;
+}
+
+.canva-empty-frame .hills {
+  position: absolute;
+  bottom: 0;
+  left: -20%;
+  right: -20%;
+  height: 50%;
+  background: #65a30d;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+.canva-empty-frame .hills-front {
+  position: absolute;
+  bottom: -10%;
+  left: 10%;
+  right: -30%;
+  height: 45%;
+  background: #4d7c0f;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+.canva-empty-frame .camera-icon-badge {
+  position: relative;
+  z-index: 5;
+  background: rgba(11, 26, 46, 0.85);
+  border: 1px solid #38bdf8;
+  color: #ffffff;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+
+.canva-empty-frame .camera-icon-badge span {
+  display: block;
+  font-size: 0.75rem;
+  color: #38bdf8;
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   Guide Assistant Drawer Modal
+   ========================================================================== */
+.guide-drawer-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 480px;
+  max-width: 90vw;
+  height: 100vh;
+  background: #0a1626;
+  border-left: 1px solid rgba(56, 189, 248, 0.3);
+  box-shadow: -15px 0 40px rgba(0, 0, 0, 0.6);
+  z-index: 2500;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(105%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #ffffff;
+}
+
+.guide-drawer-modal.open {
+  transform: translateX(0);
+}
+
+.guide-drawer-header {
+  padding: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.guide-drawer-header h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.guide-drawer-body {
+  padding: 24px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.guide-folder-group {
+  margin-bottom: 22px;
+  background: rgba(18, 40, 71, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+}
+
+.guide-folder-group h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #38bdf8;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.guide-folder-path {
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: var(--slate-400);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 4px 8px;
+  border-radius: 4px;
+  word-break: break-all;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.guide-files-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.guide-file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--slate-300);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+
+.guide-copy-btn {
+  background: rgba(56, 189, 248, 0.2);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: #38bdf8;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.guide-copy-btn:hover {
+  background: #0284c7;
+  color: #ffffff;
+}
+
+/* Toast message when copying path */
+.copy-toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #0284c7;
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  z-index: 3000;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.copy-toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
