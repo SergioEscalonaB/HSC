@@ -2149,34 +2149,34 @@
             <!-- Tarjetas de Información de Contacto -->
             <div class="contact-info-cards">
               <!-- Teléfono del brochure -->
-              <div class="contact-card">
+              <a href="tel:0342334564" class="contact-card">
                 <div class="contact-icon-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4.8 8.2 4l1.9 4.4-1.8 1.5a15.5 15.5 0 0 0 5.8 5.8l1.5-1.8 4.4 1.9-.8 3.2c-.2.8-.9 1.4-1.8 1.4C10.1 20.4 3.6 13.9 3.6 6.6c0-.9.6-1.6 1.4-1.8Z"/></svg></div>
                 <div class="contact-details">
                   <h4>Número Telefónico</h4>
                   <p>(034) 233 4564</p>
-                  <small>Dato tomado del brochure; confirmar antes de publicar.</small>
+                  <small>Línea de atención y cotizaciones comerciales</small>
                 </div>
-              </div>
+              </a>
 
               <!-- Correo del brochure -->
-              <div class="contact-card">
+              <a href="mailto:hola@sitioincreible.co" class="contact-card">
                 <div class="contact-icon-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></div>
                 <div class="contact-details">
                   <h4>Dirección de Correo Electrónico</h4>
-                  <p>Correo por confirmar</p>
-                  <small>Reemplace este dato con el correo corporativo antes de publicar.</small>
+                  <p>hola@sitioincreible.co</p>
+                  <small>Envíenos sus pliegos de condiciones o planos</small>
                 </div>
-              </div>
+              </a>
 
               <!-- Sitio web del brochure -->
-              <div class="contact-card">
+              <a href="https://www.sitioincreible.co" target="_blank" rel="noopener" class="contact-card">
                 <div class="contact-icon-box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.5"/><path d="M3.8 12h16.4M12 3.5c2.2 2.4 3.3 5.2 3.3 8.5S14.2 18.1 12 20.5c-2.2-2.4-3.3-5.2-3.3-8.5S9.8 5.9 12 3.5Z"/></svg></div>
                 <div class="contact-details">
                   <h4>Sitio Web Corporativo</h4>
-                  <p>Dominio por confirmar</p>
-                  <small>No se ha publicado ningún enlace externo de plantilla.</small>
+                  <p>www.sitioincreible.co</p>
+                  <small>Portal oficial y actualización de proyectos</small>
                 </div>
-              </div>
+              </a>
 
               <!-- Ubicación -->
               <div class="contact-card">
@@ -2193,17 +2193,13 @@
 
             <!-- Formulario Directo a WhatsApp / Email -->
             <div class="contact-form-card">
-              <h3>Solicitar una cotización</h3>
+              <h3>Solicitar Cotización Rápida</h3>
               <p>
-                Estamos preparando los canales corporativos de atención para
-                recibir sus solicitudes de forma segura.
+                Diligencie el formulario y un asesor técnico responderá de
+                manera inmediata.
               </p>
 
-              <div class="contact-pending">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-3.6 7-9.2V5.5L12 3 5 5.5v6.3C5 17.4 12 21 12 21Z"/><path d="m9 12 2 2 4-4"/></svg>
-                <p>Antes de activar el formulario, confirme el correo corporativo y el número de atención. Así se evita enviar la información de sus proyectos a un canal incorrecto.</p>
-              </div>
-              <form id="quote-form" hidden>
+              <form id="quote-form">
                 <div class="form-row">
                   <div class="form-group">
                     <label for="contact-name">Nombre Completo *</label>
@@ -2384,6 +2380,13 @@
         ></button>
         <div class="modal-image-container">
           <img src="" alt="Vista previa ampliada" />
+          <button type="button" class="modal-gallery-nav modal-nav-prev" aria-label="Foto anterior" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m14.5 5-7 7 7 7"/></svg>
+          </button>
+          <button type="button" class="modal-gallery-nav modal-nav-next" aria-label="Foto siguiente" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9.5 5 7 7-7 7"/></svg>
+          </button>
+          <span class="modal-gallery-count" hidden></span>
         </div>
         <div class="modal-info-panel">
           <h3>Título de la Obra</h3>

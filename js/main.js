@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initServiceTabs();
   initProjectFilters();
   initLightbox();
+  initContactForm();
   initImageFallbacks();
 });
 
@@ -160,42 +161,93 @@ function initLightbox() {
   const modalDesc = modal.querySelector(".modal-info-panel p");
   const modalPath = modal.querySelector(".modal-path-hint");
   const closeBtn = modal.querySelector(".modal-close-btn");
+  const previousBtn = modal.querySelector(".modal-nav-prev");
+  const nextBtn = modal.querySelector(".modal-nav-next");
+  const counter = modal.querySelector(".modal-gallery-count");
+  let gallery = [];
+  let galleryIndex = 0;
+  let currentTitle = "";
+  let currentDescription = "";
 
-  // Open modal on photo card or zoom button click
+  function loadImage(source) {
+    return new Promise((resolve) => {
+      const image = new Image();
+      image.onload = () => resolve(source);
+      image.onerror = () => resolve(null);
+      image.src = source;
+    });
+  }
+
+  async function findGalleryImages(source) {
+    const folder = source.slice(0, source.lastIndexOf("/") + 1);
+    const candidates = [source];
+
+    // Fotos adicionales: guárdelas como foto-5.jpg, foto-6.jpg, etc.
+    for (let number = 1; number <= 24; number += 1) {
+      candidates.push(`${folder}foto-${number}.jpg`);
+    }
+
+    const uniqueCandidates = [...new Set(candidates)];
+    const results = await Promise.all(uniqueCandidates.map(loadImage));
+    return results.filter(Boolean);
+  }
+
+  function renderGalleryImage() {
+    const source = gallery[galleryIndex];
+    if (!source) return;
+
+    modalImg.src = source;
+    modalImg.alt = currentTitle;
+    modalTitle.innerText = currentTitle;
+    modalDesc.innerText = currentDescription;
+    modalPath.innerText = source;
+    const hasMultipleImages = gallery.length > 1;
+    previousBtn.hidden = !hasMultipleImages;
+    nextBtn.hidden = !hasMultipleImages;
+    counter.hidden = !hasMultipleImages;
+    counter.textContent = `${galleryIndex + 1} / ${gallery.length}`;
+  }
+
+  async function openGallery(card) {
+    const img = card.querySelector("img");
+    if (!img) return;
+
+    currentTitle =
+      card.getAttribute("data-title") ||
+      card.querySelector("h3")?.innerText ||
+      "Detalle del proyecto";
+    currentDescription =
+      card.getAttribute("data-desc") || card.querySelector("p")?.innerText || "";
+    const source = card.getAttribute("data-path") || img.currentSrc || img.src;
+    gallery = await findGalleryImages(source);
+    galleryIndex = Math.max(0, gallery.indexOf(source));
+    renderGalleryImage();
+    modal.classList.add("active");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  // Abre la foto seleccionada y permite recorrer las demás de su carpeta.
   document
-    .querySelectorAll(".photo-card, .project-details-btn")
+    .querySelectorAll(".photo-card, .project-media-wrapper, .project-details-btn")
     .forEach((trigger) => {
-      trigger.addEventListener("click", (e) => {
-        // Find parent or associated image
-        let card =
+      trigger.addEventListener("click", () => {
+        const card =
           trigger.closest(".photo-card") ||
+          trigger.closest(".project-media-wrapper") ||
           trigger.closest(".project-item-card");
-        if (!card) return;
-
-        const img = card.querySelector("img");
-        const title =
-          card.getAttribute("data-title") ||
-          card.querySelector("h3")?.innerText ||
-          "Detalle del Proyecto";
-        const desc =
-          card.getAttribute("data-desc") ||
-          card.querySelector("p")?.innerText ||
-          "";
-        const path =
-          card.getAttribute("data-path") || img?.getAttribute("src") || "";
-
-        if (img) {
-          modalImg.src = img.src;
-          modalImg.alt = title;
-          modalTitle.innerText = title;
-          modalDesc.innerText = desc;
-          modalPath.innerText = path;
-          modal.classList.add("active");
-          modal.setAttribute("aria-hidden", "false");
-          document.body.style.overflow = "hidden";
-        }
+        if (card) openGallery(card);
       });
     });
+
+  previousBtn?.addEventListener("click", () => {
+    galleryIndex = (galleryIndex - 1 + gallery.length) % gallery.length;
+    renderGalleryImage();
+  });
+  nextBtn?.addEventListener("click", () => {
+    galleryIndex = (galleryIndex + 1) % gallery.length;
+    renderGalleryImage();
+  });
 
   // Close modal
   function closeModal() {
@@ -210,6 +262,14 @@ function initLightbox() {
   });
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && modal.classList.contains("active")) closeModal();
+    if (e.key === "ArrowLeft" && modal.classList.contains("active") && gallery.length > 1) {
+      galleryIndex = (galleryIndex - 1 + gallery.length) % gallery.length;
+      renderGalleryImage();
+    }
+    if (e.key === "ArrowRight" && modal.classList.contains("active") && gallery.length > 1) {
+      galleryIndex = (galleryIndex + 1) % gallery.length;
+      renderGalleryImage();
+    }
   });
 }
 
@@ -236,9 +296,9 @@ function initContactForm() {
     text += `*Teléfono:* ${phone}\n`;
     if (message) text += `*Mensaje:* ${message}\n`;
 
-    // El formulario permanece deshabilitado hasta contar con un canal
-    // corporativo confirmado. No envía ni almacena información del visitante.
-    console.info("Solicitud preparada; canal de contacto pendiente de confirmar.", text);
+    const encodedText = encodeURIComponent(text);
+    const whatsappUrl = `https://wa.me/573001234567?text=${encodedText}`;
+    window.open(whatsappUrl, "_blank", "noopener");
   });
 }
 
