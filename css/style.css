@@ -2245,6 +2245,15 @@ textarea:focus-visible {
   :root {
     --header-height: 70px;
   }
+  .header-actions .btn {
+    display: none !important;
+  }
+  .hero-visual-card {
+    padding: 12px;
+  }
+  .hero-floating-badge {
+    display: none !important;
+  }
   .service-nav-arrow {
     display: none;
   }
