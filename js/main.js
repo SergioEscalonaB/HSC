@@ -4,12 +4,16 @@
  */
 
 document.addEventListener("DOMContentLoaded", () => {
+  if (typeof lucide !== "undefined" && lucide.createIcons) {
+    lucide.createIcons();
+  }
   initHeader();
   initServiceTabs();
   initProjectFilters();
   initLightbox();
   initContactForm();
   initImageFallbacks();
+  initCounterAnimations();
 });
 
 /* ==========================================================================

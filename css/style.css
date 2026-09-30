@@ -122,6 +122,107 @@ ul {
   list-style: none;
 }
 
+/* ==========================================================================
+   Lucide Icons Integration & Design System
+   ========================================================================== */
+.lucide,
+[data-lucide] {
+  width: 1.25em;
+  height: 1.25em;
+  display: inline-block;
+  vertical-align: -0.2em;
+  stroke: currentColor;
+  stroke-width: 1.85px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.btn .lucide {
+  width: 1.15em;
+  height: 1.15em;
+  stroke-width: 2px;
+}
+
+.hero-pill .lucide {
+  width: 15px;
+  height: 15px;
+  stroke-width: 2px;
+  color: var(--blue-400);
+}
+
+.tab-btn .lucide {
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.9px;
+  color: var(--blue-500);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.tab-btn:hover .lucide,
+.tab-btn.active .lucide {
+  color: var(--blue-300);
+}
+
+.tab-btn.active .lucide {
+  transform: scale(1.08);
+}
+
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-btn .lucide {
+  width: 15px;
+  height: 15px;
+  stroke-width: 2px;
+}
+
+.project-location-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.project-location-badge .lucide {
+  width: 13px;
+  height: 13px;
+  stroke-width: 2px;
+}
+
+.project-details-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.project-details-btn .lucide {
+  width: 15px;
+  height: 15px;
+  stroke-width: 2px;
+  transition: transform var(--transition-fast);
+}
+
+.project-details-btn:hover .lucide {
+  transform: translateX(4px);
+}
+
+.role-badge-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.role-badge-card .lucide {
+  width: 18px;
+  height: 18px;
+  color: var(--blue-500);
+  stroke-width: 2px;
+  flex-shrink: 0;
+}
+
 .container {
   width: 100%;
   max-width: var(--container-width);
@@ -839,13 +940,46 @@ ul {
   border-color: rgba(2, 132, 199, 0.4);
 }
 
+.pillar-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.pillar-icon-box {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-sm);
+  background: rgba(2, 132, 199, 0.08);
+  border: 1px solid rgba(2, 132, 199, 0.18);
+  color: var(--blue-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-normal);
+}
+
+.pillar-card:hover .pillar-icon-box {
+  background: var(--blue-500);
+  color: var(--white);
+  border-color: var(--blue-500);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.35);
+}
+
+.pillar-icon-box .lucide {
+  width: 22px;
+  height: 22px;
+  stroke-width: 1.9px;
+}
+
 .pillar-number {
   font-family: var(--font-display);
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 800;
   color: var(--blue-500);
   opacity: 0.85;
-  margin-bottom: 12px;
   line-height: 1;
 }
 
@@ -993,24 +1127,22 @@ ul {
 .feature-check-icon {
   width: 22px;
   height: 22px;
+  min-width: 22px;
   border-radius: 6px;
-  background: var(--blue-500);
-  color: var(--white);
+  background: rgba(2, 132, 199, 0.12);
+  color: var(--blue-600);
+  border: 1px solid rgba(2, 132, 199, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0;
   flex-shrink: 0;
   margin-top: 2px;
 }
 
-.feature-check-icon::after {
-  content: "";
-  width: 12px;
-  height: 12px;
-  background: currentColor;
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M9.2 17.1 4.6 12.5l1.8-1.8 2.8 2.8 8.4-8.4 1.8 1.8z'/%3E%3C/svg%3E") center / contain no-repeat;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M9.2 17.1 4.6 12.5l1.8-1.8 2.8 2.8 8.4-8.4 1.8 1.8z'/%3E%3C/svg%3E") center / contain no-repeat;
+.feature-check-icon .lucide {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.5px;
 }
 
 /* Service Photos 2x2 Grid */
@@ -1340,6 +1472,34 @@ ul {
   border-color: var(--blue-300);
 }
 
+.why-icon-box {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 18px auto;
+  border-radius: 14px;
+  background: rgba(2, 132, 199, 0.1);
+  border: 1px solid rgba(2, 132, 199, 0.22);
+  color: var(--blue-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-normal);
+}
+
+.why-card:hover .why-icon-box {
+  background: var(--blue-600);
+  color: var(--white);
+  border-color: var(--blue-600);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(2, 132, 199, 0.35);
+}
+
+.why-icon-box .lucide {
+  width: 28px;
+  height: 28px;
+  stroke-width: 1.85px;
+}
+
 .why-card-metric {
   font-family: var(--font-display);
   font-size: 3.4rem;
@@ -1655,19 +1815,24 @@ ul {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  width: 58px;
-  height: 58px;
+  width: 56px;
+  height: 56px;
   background: #25d366;
   color: var(--white);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.9rem;
-  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
   z-index: 999;
   cursor: pointer;
   transition: all var(--transition-normal);
+}
+
+.floating-whatsapp-btn .lucide {
+  width: 28px;
+  height: 28px;
+  stroke-width: 2.2px;
 }
 
 a:focus-visible,
@@ -1726,15 +1891,11 @@ textarea:focus-visible {
   display: none !important;
 }
 
-.photo-zoom-btn {
-  font-size: 0;
-}
-
-.photo-zoom-btn::before {
-  content: "+";
-  font-size: 1.25rem;
-  font-weight: 300;
-  line-height: 1;
+.photo-zoom-btn .lucide {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2px;
+  color: var(--white);
 }
 
 .floating-guide-btn:hover {
@@ -1792,10 +1953,9 @@ textarea:focus-visible {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(10, 22, 38, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: var(--white);
-  font-size: 1.2rem;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -1806,23 +1966,14 @@ textarea:focus-visible {
 
 .modal-close-btn:hover {
   background: var(--blue-500);
+  border-color: var(--blue-400);
+  transform: rotate(90deg);
 }
 
-.modal-close-btn::before,
-.modal-close-btn::after {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 1px;
-  background: currentColor;
-}
-
-.modal-close-btn::before {
-  transform: rotate(45deg);
-}
-
-.modal-close-btn::after {
-  transform: rotate(-45deg);
+.modal-close-btn .lucide {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2px;
 }
 
 .modal-image-container {
