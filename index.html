@@ -496,8 +496,22 @@
             </button>
           </div>
 
-          <!-- PANE 1: OBRAS DE INGENIERÍA CIVIL (Página 4 del brochure) -->
-          <div class="service-pane active" id="service-civil" role="tabpanel">
+          <!-- Carrusel / Navegador de Servicios -->
+          <div class="services-carousel-container">
+            <!-- Flecha sutil izquierda para retroceder de servicio -->
+            <button
+              type="button"
+              class="service-nav-arrow service-nav-prev"
+              aria-label="Servicio anterior"
+              title="Ver servicio anterior"
+            >
+              <i data-lucide="chevron-left"></i>
+            </button>
+
+            <!-- Contenedor de Paneles de Servicios -->
+            <div class="services-panes-wrapper">
+              <!-- PANE 1: OBRAS DE INGENIERÍA CIVIL (Página 4 del brochure) -->
+              <div class="service-pane active" id="service-civil" role="tabpanel">
             <div class="service-card-layout">
               <div class="service-info-col">
                 <span class="service-tagline"
@@ -1467,6 +1481,55 @@
                 </div>
               </div>
             </div>
+          </div>
+
+            </div><!-- Fin services-panes-wrapper -->
+
+            <!-- Flecha sutil derecha para avanzar al siguiente servicio -->
+            <button
+              type="button"
+              class="service-nav-arrow service-nav-next"
+              aria-label="Siguiente servicio"
+              title="Ver siguiente servicio"
+            >
+              <i data-lucide="chevron-right"></i>
+            </button>
+          </div><!-- Fin services-carousel-container -->
+
+          <!-- Barra inferior sutil de navegación entre servicios -->
+          <div class="services-nav-indicator">
+            <button
+              type="button"
+              class="services-nav-text-btn prev-service-btn"
+              aria-label="Servicio anterior"
+            >
+              <i data-lucide="chevron-left"></i>
+              <span>Servicio anterior</span>
+            </button>
+
+            <div class="services-nav-center">
+              <span class="services-counter-badge">
+                Servicio <strong id="current-service-num">1</strong> de 6:
+                <span id="current-service-name">Obras de Ingeniería Civil</span>
+              </span>
+              <div class="services-nav-dots" role="tablist" aria-label="Selector de servicio">
+                <button type="button" class="service-dot active" data-index="0" aria-label="1. Obras Civiles" title="1. Obras Civiles"></button>
+                <button type="button" class="service-dot" data-index="1" aria-label="2. Estructuras Metálicas" title="2. Estructuras Metálicas"></button>
+                <button type="button" class="service-dot" data-index="2" aria-label="3. Montajes Electromecánicos" title="3. Montajes Electromecánicos"></button>
+                <button type="button" class="service-dot" data-index="3" aria-label="4. Obras de Urbanismo" title="4. Obras de Urbanismo"></button>
+                <button type="button" class="service-dot" data-index="4" aria-label="5. Mano de Obra" title="5. Mano de Obra"></button>
+                <button type="button" class="service-dot" data-index="5" aria-label="6. Mecanizado" title="6. Mecanizado"></button>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              class="services-nav-text-btn next-service-btn"
+              aria-label="Siguiente servicio"
+            >
+              <span>Siguiente servicio</span>
+              <i data-lucide="chevron-right"></i>
+            </button>
           </div>
         </div>
       </section>

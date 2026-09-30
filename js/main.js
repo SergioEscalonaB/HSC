@@ -85,30 +85,99 @@ function initHeader() {
    2. Service Tabs Switcher
    ========================================================================== */
 function initServiceTabs() {
-  const tabButtons = document.querySelectorAll(".tab-btn");
-  const tabPanes = document.querySelectorAll(".service-pane");
+  const tabButtons = Array.from(document.querySelectorAll(".tab-btn"));
+  const tabPanes = Array.from(document.querySelectorAll(".service-pane"));
+  const prevBtns = document.querySelectorAll(".service-nav-prev, .prev-service-btn");
+  const nextBtns = document.querySelectorAll(".service-nav-next, .next-service-btn");
+  const dots = Array.from(document.querySelectorAll(".service-dot"));
+  const counterNumEl = document.getElementById("current-service-num");
+  const currentNameEl = document.getElementById("current-service-name");
 
-  tabButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const targetId = btn.getAttribute("data-target");
+  if (!tabButtons.length || !tabPanes.length) return;
 
-      // Update button active state
-      tabButtons.forEach((b) => {
-        b.classList.remove("active");
-        b.setAttribute("aria-selected", "false");
-      });
-      btn.classList.add("active");
-      btn.setAttribute("aria-selected", "true");
+  let currentIndex = 0;
 
-      // Show targeted pane
-      tabPanes.forEach((pane) => {
-        pane.classList.remove("active");
-        pane.hidden = true;
-        if (pane.id === targetId) {
-          pane.classList.add("active");
-          pane.hidden = false;
+  function goToService(index, shouldScroll = false) {
+    if (index < 0) {
+      index = tabButtons.length - 1;
+    } else if (index >= tabButtons.length) {
+      index = 0;
+    }
+    currentIndex = index;
+
+    const targetBtn = tabButtons[currentIndex];
+    if (!targetBtn) return;
+    const targetId = targetBtn.getAttribute("data-target");
+
+    // Update tab buttons
+    tabButtons.forEach((btn, idx) => {
+      const isActive = idx === currentIndex;
+      btn.classList.toggle("active", isActive);
+      btn.setAttribute("aria-selected", isActive ? "true" : "false");
+    });
+
+    // Update panes
+    tabPanes.forEach((pane) => {
+      const isTarget = pane.id === targetId;
+      pane.classList.toggle("active", isTarget);
+      pane.hidden = !isTarget;
+    });
+
+    // Update pagination dots
+    dots.forEach((dot, idx) => {
+      dot.classList.toggle("active", idx === currentIndex);
+    });
+
+    // Update service number and title indicator
+    if (counterNumEl) {
+      counterNumEl.textContent = currentIndex + 1;
+    }
+    if (currentNameEl) {
+      const titleSpan = targetBtn.querySelector("span");
+      currentNameEl.textContent = titleSpan ? titleSpan.textContent.trim() : "";
+    }
+
+    // Scroll smoothly to top of service if clicked from bottom button
+    if (shouldScroll) {
+      const tabsNav = document.querySelector(".services-tabs-nav");
+      if (tabsNav) {
+        const rect = tabsNav.getBoundingClientRect();
+        if (rect.top < 80 || rect.top > window.innerHeight) {
+          tabsNav.scrollIntoView({ behavior: "smooth", block: "start" });
         }
-      });
+      }
+    }
+  }
+
+  // Click on top tab buttons
+  tabButtons.forEach((btn, idx) => {
+    btn.addEventListener("click", () => {
+      goToService(idx, false);
+    });
+  });
+
+  // Click on prev arrows / buttons
+  prevBtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const isBottomBtn = btn.classList.contains("prev-service-btn");
+      goToService(currentIndex - 1, isBottomBtn);
+    });
+  });
+
+  // Click on next arrows / buttons
+  nextBtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const isBottomBtn = btn.classList.contains("next-service-btn");
+      goToService(currentIndex + 1, isBottomBtn);
+    });
+  });
+
+  // Click on pagination dots
+  dots.forEach((dot, idx) => {
+    dot.addEventListener("click", () => {
+      goToService(idx, false);
     });
   });
 }
