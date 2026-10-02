@@ -1933,6 +1933,21 @@ ul {
   letter-spacing: -0.01em;
 }
 
+.footer-col > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--blue-300);
+  font-weight: 600;
+  margin-bottom: 10px;
+  transition: all var(--transition-fast);
+}
+
+.footer-col > a:hover {
+  color: var(--white);
+  transform: translateX(3px);
+}
+
 .footer-links-list {
   display: flex;
   flex-direction: column;
