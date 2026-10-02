@@ -23,6 +23,208 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/placeholders.css" />
+
+    <!-- Estilos de Alto Contraste y Perfección Visual para el Formulario -->
+    <style>
+      /* Garantizar contraste absoluto en el formulario */
+      .careers-section {
+        background-color: #f1f5f9;
+        padding: 50px 0 80px;
+      }
+
+      .careers-form-panel {
+        background: #ffffff !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 16px !important;
+        padding: 36px 32px !important;
+        box-shadow: 0 12px 36px rgba(15, 23, 42, 0.08) !important;
+      }
+
+      .careers-form-panel h3 {
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        color: #0a1626 !important;
+        font-weight: 800;
+        margin-bottom: 6px;
+      }
+
+      .form-section-header {
+        font-size: 0.88rem;
+        font-weight: 800;
+        color: #0284c7;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        margin: 24px 0 14px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #e2e8f0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .form-section-header:first-of-type {
+        margin-top: 14px;
+      }
+
+      /* Labels completamente oscuros y legibles */
+      .careers-form-panel .form-group label {
+        display: flex !important;
+        align-items: center !important;
+        gap: 4px !important;
+        font-size: 0.9rem !important;
+        font-weight: 700 !important;
+        color: #0f172a !important;
+        margin-bottom: 8px !important;
+      }
+
+      .careers-form-panel .req-star {
+        color: #ef4444 !important;
+        font-weight: 800 !important;
+        font-size: 1rem !important;
+      }
+
+      /* Contenedor de Input con Icono */
+      .input-icon-group {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      .input-icon-group .field-icon {
+        position: absolute;
+        left: 14px;
+        width: 19px;
+        height: 19px;
+        color: #0284c7;
+        pointer-events: none;
+        z-index: 2;
+      }
+
+      /* Inputs con fondo blanco nítido, borde marcado y texto oscuro */
+      .careers-form-panel .form-control {
+        width: 100% !important;
+        background-color: #ffffff !important;
+        border: 1.5px solid #94a3b8 !important;
+        border-radius: 9px !important;
+        color: #0f172a !important;
+        font-size: 0.95rem !important;
+        font-weight: 500 !important;
+        padding: 12px 14px !important;
+        box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05) !important;
+        transition: all 0.2s ease !important;
+      }
+
+      .input-icon-group .form-control {
+        padding-left: 42px !important;
+      }
+
+      .careers-form-panel .form-control::placeholder {
+        color: #64748b !important;
+        font-weight: 400 !important;
+        opacity: 0.85;
+      }
+
+      .careers-form-panel .form-control:focus {
+        background-color: #ffffff !important;
+        border-color: #0284c7 !important;
+        box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.25) !important;
+        outline: none !important;
+      }
+
+      /* Select dropdown legible */
+      .careers-form-panel select.form-control {
+        cursor: pointer;
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+      }
+
+      .careers-form-panel select.form-control option {
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+        padding: 10px !important;
+      }
+
+      /* Área de Carga de Hoja de Vida */
+      .upload-cv-container {
+        border: 2px dashed #0284c7;
+        background: #f0f9ff;
+        border-radius: 12px;
+        padding: 22px 18px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        position: relative;
+        margin-bottom: 12px;
+      }
+
+      .upload-cv-container:hover {
+        background: #e0f2fe;
+        border-color: #0070ba;
+      }
+
+      .upload-cv-container input[type="file"] {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        z-index: 5;
+      }
+
+      .upload-cv-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #e0f2fe;
+        color: #0284c7;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 8px;
+      }
+
+      .upload-cv-title {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #0a1626;
+        margin-bottom: 4px;
+      }
+
+      .upload-cv-desc {
+        font-size: 0.8rem;
+        color: #475569;
+      }
+
+      .upload-file-status {
+        margin-top: 10px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 8px 14px;
+        background: #dcfce7;
+        border: 1px solid #86efac;
+        border-radius: 8px;
+        color: #15803d;
+        font-size: 0.88rem;
+        font-weight: 700;
+      }
+
+      /* Panel Izquierdo Info */
+      .careers-info-panel {
+        background: #ffffff !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 16px !important;
+        padding: 32px !important;
+        box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05) !important;
+      }
+
+      .careers-info-panel h3 {
+        color: #0a1626 !important;
+        font-weight: 800;
+      }
+    </style>
   </head>
   <body>
     <!-- =======================================================================
@@ -62,16 +264,12 @@
           <a href="index.html" class="careers-hero-back">
             <i data-lucide="arrow-left"></i> Volver a la página principal
           </a>
-          <div class="section-tag light">
-            <span class="section-tag-dot" style="background: #38bdf8"></span>
-            Talento Humano & Vacantes
-          </div>
           <h1 class="section-title light" style="margin-bottom: 16px;">
             Trabaja con <span>H.S.C.</span>
           </h1>
           <p class="section-subtitle light" style="max-width: 720px;">
             Construimos proyectos industriales de alta envergadura. Buscamos profesionales,
-            técnicos y especialistas comprometidos con la seguridad, la precisión y la excelencia.
+            técnicos y especialistas comprometidos con la seguridad, la precisión y la excelencia operativa.
           </p>
         </div>
       </section>
@@ -87,11 +285,11 @@
             <div class="careers-info-panel">
               <div class="section-tag" style="margin-bottom: 12px;">
                 <span class="section-tag-dot"></span>
-                Convocatorias Abiertas
+                Convocatorias Activas
               </div>
               <h3>Perfiles Más Solicitados</h3>
-              <p style="color: var(--slate-600); font-size: 0.92rem; margin-bottom: 20px;">
-                Mantenemos una base activa de candidatos para paradas de planta, montaje de estructuras,
+              <p style="color: #475569; font-size: 0.92rem; margin-bottom: 20px;">
+                Mantenemos una base activa de candidatos para proyectos, paradas de planta, montaje de estructuras,
                 obras civiles y mantenimiento electromecánico:
               </p>
 
@@ -138,172 +336,234 @@
               </div>
 
               <!-- Beneficios HSC -->
-              <div style="margin-top: 30px; padding-top: 24px; border-top: 1px solid var(--slate-200);">
-                <h4 style="font-size: 1rem; color: var(--navy-900); margin-bottom: 12px; font-weight: 700;">
+              <div style="margin-top: 30px; padding-top: 24px; border-top: 1px solid #e2e8f0;">
+                <h4 style="font-size: 1rem; color: #0a1626; margin-bottom: 14px; font-weight: 700;">
                   ¿Por qué integrarse a nuestro equipo?
                 </h4>
-                <ul style="display: flex; flex-direction: column; gap: 8px; font-size: 0.88rem; color: var(--slate-600);">
-                  <li style="display: flex; align-items: center; gap: 8px;">
-                    <i data-lucide="check-circle" style="color: var(--accent-green); width: 16px; height: 16px;"></i>
-                    Cumplimiento riguroso de todas las prestaciones de ley y seguridad social.
+                <ul style="display: flex; flex-direction: column; gap: 10px; font-size: 0.88rem; color: #475569;">
+                  <li style="display: flex; align-items: center; gap: 10px;">
+                    <i data-lucide="check-circle" style="color: var(--accent-green); width: 18px; height: 18px; flex-shrink: 0;"></i>
+                    Cumplimiento riguroso de prestaciones de ley y seguridad social.
                   </li>
-                  <li style="display: flex; align-items: center; gap: 8px;">
-                    <i data-lucide="check-circle" style="color: var(--accent-green); width: 16px; height: 16px;"></i>
-                    Cultura preventiva SST con meta de cero accidentes.
+                  <li style="display: flex; align-items: center; gap: 10px;">
+                    <i data-lucide="check-circle" style="color: var(--accent-green); width: 18px; height: 18px; flex-shrink: 0;"></i>
+                    Cultura preventiva SST certificada con meta de cero accidentes.
                   </li>
-                  <li style="display: flex; align-items: center; gap: 8px;">
-                    <i data-lucide="check-circle" style="color: var(--accent-green); width: 16px; height: 16px;"></i>
-                    Experiencia en proyectos de primer nivel con industrias líderes del país.
+                  <li style="display: flex; align-items: center; gap: 10px;">
+                    <i data-lucide="check-circle" style="color: var(--accent-green); width: 18px; height: 18px; flex-shrink: 0;"></i>
+                    Participación en proyectos con las principales industrias del país.
                   </li>
                 </ul>
               </div>
-
-              <!-- Información de Contacto Directo RRHH
-              <div style="margin-top: 24px; padding: 16px; background: var(--blue-50); border-radius: var(--radius-sm); font-size: 0.85rem; color: var(--slate-700);">
-                <strong>¿Prefiere enviar su CV por correo?</strong><br />
-                Envíe su hoja de vida a: <a href="mailto:hola@sitioincreible.co" style="color: var(--blue-600); font-weight: 600;">hola@sitioincreible.co</a> indicando en el asunto su cargo de interés.
-              </div>-->
             </div>
 
-            <!-- Panel Derecho: Formulario de Postulación -->
+            <!-- Panel Derecho: Formulario de Postulación de Alto Contraste -->
             <div class="careers-form-panel">
               <h3>Formulario de Postulación</h3>
-              <p style="color: var(--slate-600); font-size: 0.9rem; margin-bottom: 20px;">
-                Complete sus datos para que nuestro departamento de Talento Humano revise su perfil:
+              <p style="color: #475569; font-size: 0.9rem; margin-bottom: 16px;">
+                Diligencie el siguiente formulario. Los campos con (<span class="req-star">*</span>) son obligatorios.
               </p>
 
-              <!-- Notificación configurable si se usa un enlace externo -->
-              <!-- =======================================================
-                   NOTA PARA EL ADMINISTRADOR:
-                   Si ya dispone de un formulario de Google Forms, Microsoft Forms
-                   o Typeform, puede incrustar el iframe aquí o redirigir
-                   el botón de index.html directamente a su URL.
-                   ======================================================= -->
-              <div class="careers-notice-box">
-                <i data-lucide="info"></i>
-                <div>
-                  <strong>Bolsa de Empleo Oficial HSC:</strong> Sus datos serán tratados conforme a la política de protección de datos personales para procesos de selección activos.
-                </div>
-              </div>
-
               <form id="careers-form">
+                
+                <!-- SECCIÓN 1: DATOS PERSONALES -->
+                <div class="form-section-header">
+                  1. Información Personal y de Contacto
+                </div>
+
                 <div class="form-row">
                   <div class="form-group">
-                    <label for="applicant-name">Nombre Completo *</label>
-                    <input
-                      type="text"
-                      id="applicant-name"
-                      class="form-control"
-                      placeholder="Ej. Juan Pérez"
-                      required
-                    />
+                    <label for="applicant-name">
+                      Nombre Completo <span class="req-star">*</span>
+                    </label>
+                    <div class="input-icon-group">
+                      <i data-lucide="user" class="field-icon"></i>
+                      <input
+                        type="text"
+                        id="applicant-name"
+                        class="form-control"
+                        placeholder="Ej. Juan Carlos Pérez"
+                        required
+                      />
+                    </div>
                   </div>
+
                   <div class="form-group">
-                    <label for="applicant-id">Documento / C.C. *</label>
-                    <input
-                      type="text"
-                      id="applicant-id"
-                      class="form-control"
-                      placeholder="Ej. 1.045.678.900"
-                      required
-                    />
+                    <label for="applicant-id">
+                      Cédula / Documento de Identidad <span class="req-star">*</span>
+                    </label>
+                    <div class="input-icon-group">
+                      <i data-lucide="credit-card" class="field-icon"></i>
+                      <input
+                        type="text"
+                        id="applicant-id"
+                        class="form-control"
+                        placeholder="Ej. 1.045.678.900"
+                        required
+                      />
+                    </div>
                   </div>
                 </div>
 
                 <div class="form-row">
                   <div class="form-group">
-                    <label for="applicant-phone">Teléfono / WhatsApp *</label>
-                    <input
-                      type="tel"
-                      id="applicant-phone"
-                      class="form-control"
-                      placeholder="Ej. 300 123 4567"
-                      required
-                    />
+                    <label for="applicant-phone">
+                      Teléfono / WhatsApp de Contacto <span class="req-star">*</span>
+                    </label>
+                    <div class="input-icon-group">
+                      <i data-lucide="phone" class="field-icon"></i>
+                      <input
+                        type="tel"
+                        id="applicant-phone"
+                        class="form-control"
+                        placeholder="Ej. 300 123 4567"
+                        required
+                      />
+                    </div>
                   </div>
+
                   <div class="form-group">
-                    <label for="applicant-email">Correo Electrónico *</label>
-                    <input
-                      type="email"
-                      id="applicant-email"
-                      class="form-control"
-                      placeholder="Ej. juan@correo.com"
-                      required
-                    />
+                    <label for="applicant-email">
+                      Correo Electrónico <span class="req-star">*</span>
+                    </label>
+                    <div class="input-icon-group">
+                      <i data-lucide="mail" class="field-icon"></i>
+                      <input
+                        type="email"
+                        id="applicant-email"
+                        class="form-control"
+                        placeholder="Ej. juan.perez@correo.com"
+                        required
+                      />
+                    </div>
                   </div>
                 </div>
 
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="applicant-city">Ciudad de Residencia *</label>
+                <div class="form-group">
+                  <label for="applicant-city">
+                    Ciudad de Residencia Actual <span class="req-star">*</span>
+                  </label>
+                  <div class="input-icon-group">
+                    <i data-lucide="map-pin" class="field-icon"></i>
                     <input
                       type="text"
                       id="applicant-city"
                       class="form-control"
-                      placeholder="Ej. Barranquilla / Manizales / Medellín"
+                      placeholder="Ej. Barranquilla, Atlántico / Manizales / Medellín"
                       required
                     />
                   </div>
+                </div>
+
+                <!-- SECCIÓN 2: PERFIL TÉCNICO Y EXPERIENCIA -->
+                <div class="form-section-header">
+                  2. Especialidad y Experiencia Laboral
+                </div>
+
+                <div class="form-row">
                   <div class="form-group">
-                    <label for="applicant-experience">Años de Experiencia *</label>
-                    <select id="applicant-experience" class="form-control" required>
-                      <option value="" disabled selected>Seleccione...</option>
-                      <option value="Menos de 1 año">Menos de 1 año</option>
-                      <option value="1 a 3 años">1 a 3 años</option>
-                      <option value="3 a 5 años">3 a 5 años</option>
-                      <option value="Más de 5 años">Más de 5 años</option>
-                      <option value="Más de 10 años">Más de 10 años</option>
-                    </select>
+                    <label for="applicant-role">
+                      Cargo o Especialidad a la que Postula <span class="req-star">*</span>
+                    </label>
+                    <div class="input-icon-group">
+                      <i data-lucide="hard-hat" class="field-icon"></i>
+                      <select id="applicant-role" class="form-control" required>
+                        <option value="" disabled selected>Seleccione especialidad...</option>
+                        <option value="Ingeniero Civil / Residente de Obra">Ingeniero Civil / Residente de Obra</option>
+                        <option value="Soldador Calificado 3G/4G/6G">Soldador Calificado 3G / 4G / 6G</option>
+                        <option value="Montador / Armador de Estructuras">Montador / Armador de Estructuras</option>
+                        <option value="Mecánico Industrial / Montaje">Mecánico Industrial / Montaje</option>
+                        <option value="Inspector SST / SISO">Inspector SST / SISO Certificado</option>
+                        <option value="Tornero / Fresador de Precisión">Tornero / Fresador de Precisión</option>
+                        <option value="Maestro / Oficial de Obra Civil">Maestro / Oficial de Obra Civil</option>
+                        <option value="Ayudante Técnico">Ayudante Técnico</option>
+                        <option value="Otro">Otro perfil técnico</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="applicant-experience">
+                      Años de Experiencia en el Sector <span class="req-star">*</span>
+                    </label>
+                    <div class="input-icon-group">
+                      <i data-lucide="award" class="field-icon"></i>
+                      <select id="applicant-experience" class="form-control" required>
+                        <option value="" disabled selected>Seleccione experiencia...</option>
+                        <option value="Menos de 1 año">Menos de 1 año</option>
+                        <option value="1 a 3 años">De 1 a 3 años</option>
+                        <option value="3 a 5 años">De 3 a 5 años</option>
+                        <option value="Más de 5 años">De 5 a 10 años</option>
+                        <option value="Más de 10 años">Más de 10 años</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="applicant-role">Cargo o Área a la que Postula *</label>
-                  <select id="applicant-role" class="form-control" required>
-                    <option value="" disabled selected>Seleccione especialidad...</option>
-                    <option value="Ingeniero Civil / Residente de Obra">Ingeniero Civil / Residente de Obra</option>
-                    <option value="Soldador Homologado 3G/4G/6G">Soldador Homologado 3G / 4G / 6G</option>
-                    <option value="Montador / Armador de Estructuras">Montador / Armador de Estructuras</option>
-                    <option value="Mecánico Industrial / Montaje">Mecánico Industrial / Montaje</option>
-                    <option value="Inspector SST / SISO">Inspector SST / SISO Certificado</option>
-                    <option value="Tornero / Fresador de Precisión">Tornero / Fresador de Precisión</option>
-                    <option value="Oficial de Obra Civil">Oficial de Obra Civil</option>
-                    <option value="Ayudante Técnico">Ayudante Técnico</option>
-                    <option value="Otro">Otro (Especificar en el mensaje)</option>
-                  </select>
+                <!-- SECCIÓN 3: HOJA DE VIDA (CV) -->
+                <div class="form-section-header">
+                  3. Hoja de Vida y Documentación
                 </div>
 
+                <!-- Opción 1: Adjuntar archivo -->
                 <div class="form-group">
-                  <label for="applicant-cv-link">Enlace a su Hoja de Vida (Google Drive, Dropbox, OneDrive, LinkedIn) *</label>
-                  <input
-                    type="url"
-                    id="applicant-cv-link"
-                    class="form-control"
-                    placeholder="https://drive.google.com/file/d/... o enlace público"
-                    required
-                  />
-                  <small style="display: block; font-size: 0.76rem; color: var(--slate-500); margin-top: 4px;">
-                    Asegúrese de que el enlace tenga permisos de visualización pública o habilitados para compartir.
+                  <label>
+                    Adjuntar Archivo de Hoja de Vida (PDF o Word)
+                  </label>
+                  <div class="upload-cv-container" id="drop-zone">
+                    <input type="file" id="applicant-file" accept=".pdf,.doc,.docx" />
+                    <div class="upload-cv-icon"><i data-lucide="upload-cloud"></i></div>
+                    <div class="upload-cv-title">Haga clic o arrastre su Hoja de Vida aquí</div>
+                    <div class="upload-cv-desc">Formatos permitidos: PDF, DOC, DOCX (Máx. 15MB)</div>
+                    <div class="upload-file-status" id="file-status">
+                      <i data-lucide="check-circle"></i>
+                      <span id="file-name-display">Archivo seleccionado correctamente</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Opción 2: Enlace a Drive/LinkedIn -->
+                <div class="form-group">
+                  <label for="applicant-cv-link">
+                    O pegue el enlace de su CV en la nube (Google Drive, Dropbox, LinkedIn)
+                  </label>
+                  <div class="input-icon-group">
+                    <i data-lucide="link" class="field-icon"></i>
+                    <input
+                      type="url"
+                      id="applicant-cv-link"
+                      class="form-control"
+                      placeholder="https://drive.google.com/file/d/... o perfil de LinkedIn"
+                    />
+                  </div>
+                  <small style="display: block; font-size: 0.78rem; color: #64748b; margin-top: 5px;">
+                    Si comparte enlace de Google Drive, recuerde activar el permiso de "Cualquier persona con el enlace".
                   </small>
                 </div>
 
                 <div class="form-group">
-                  <label for="applicant-message">Resumen de Experiencia / Observaciones</label>
+                  <label for="applicant-message">
+                    Resumen Profesional / Certificados Vigentes (Opcional)
+                  </label>
                   <textarea
                     id="applicant-message"
                     class="form-control"
                     rows="3"
-                    placeholder="Describa brevemente los proyectos en que ha participado, certificados vigentes (ej. Alturas, Confinados, etc.)..."
+                    placeholder="Mencione cursos de alturas, espacios confinados, soldadura homologada o proyectos destacados en los que haya laborado..."
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
                   class="btn btn-primary btn-lg"
-                  style="width: 100%; margin-top: 10px;"
+                  style="width: 100%; justify-content: center; gap: 10px; margin-top: 10px;"
                 >
-                  <i data-lucide="send"></i> Enviar Postulación Laboral
+                  Enviar Postulación Laboral
                 </button>
+
+                <p style="text-align: center; font-size: 0.78rem; color: #64748b; margin-top: 14px;">
+                Sus datos serán tratados conforme a la política de protección de datos personales de HSC S.A.S. para convocatorias vigentes.
+                </p>
               </form>
             </div>
 
@@ -389,6 +649,23 @@
           lucide.createIcons();
         }
 
+        // Manejo de archivo adjunto
+        const fileInput = document.getElementById("applicant-file");
+        const fileStatus = document.getElementById("file-status");
+        const fileNameDisplay = document.getElementById("file-name-display");
+
+        if (fileInput && fileStatus && fileNameDisplay) {
+          fileInput.addEventListener("change", (e) => {
+            if (fileInput.files && fileInput.files.length > 0) {
+              const file = fileInput.files[0];
+              fileNameDisplay.textContent = `Archivo adjunto: ${file.name} (${(file.size / (1024 * 1024)).toFixed(2)} MB)`;
+              fileStatus.style.display = "inline-flex";
+            } else {
+              fileStatus.style.display = "none";
+            }
+          });
+        }
+
         // Manejador del formulario de postulaciones
         const careersForm = document.getElementById("careers-form");
         if (careersForm) {
@@ -404,6 +681,8 @@
             const role = document.getElementById("applicant-role").value;
             const cvLink = document.getElementById("applicant-cv-link").value.trim();
             const message = document.getElementById("applicant-message").value.trim();
+            const hasFile = fileInput && fileInput.files && fileInput.files.length > 0;
+            const fileName = hasFile ? fileInput.files[0].name : "";
 
             let text = `*POSTULACIÓN LABORAL - HSC S.A.S.*\n\n`;
             text += `*Nombre:* ${name}\n`;
@@ -413,8 +692,15 @@
             text += `*Ciudad:* ${city}\n`;
             text += `*Teléfono:* ${phone}\n`;
             text += `*Correo:* ${email}\n`;
-            text += `*Enlace a Hoja de Vida:* ${cvLink}\n`;
-            if (message) text += `*Observaciones:* ${message}\n`;
+            if (hasFile) {
+              text += `*Hoja de Vida:* Archivo adjunto listo para enviar (${fileName})\n`;
+            }
+            if (cvLink) {
+              text += `*Enlace a CV:* ${cvLink}\n`;
+            }
+            if (message) {
+              text += `*Perfil/Observaciones:* ${message}\n`;
+            }
 
             const encodedText = encodeURIComponent(text);
             const whatsappUrl = `https://wa.me/573001112222?text=${encodedText}`;

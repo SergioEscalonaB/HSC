@@ -2426,6 +2426,32 @@ textarea:focus-visible {
   line-height: 1.4;
 }
 
+/* Highlight link para 'Trabaja con nosotros' en footer */
+.footer-job-highlight {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--blue-400) !important;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  padding: 6px 14px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  width: fit-content;
+}
+
+.footer-job-highlight:hover {
+  color: var(--white) !important;
+  background: rgba(2, 132, 199, 0.3);
+  border-color: var(--blue-400);
+  transform: translateX(4px);
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25);
+}
+
 .careers-form-panel {
   background: var(--white);
   border: 1px solid var(--slate-200);
@@ -2436,28 +2462,186 @@ textarea:focus-visible {
 
 .careers-form-panel h3 {
   font-family: var(--font-display);
-  font-size: 1.35rem;
+  font-size: 1.45rem;
   color: var(--navy-900);
+  margin-bottom: 6px;
+}
+
+.careers-form-panel .form-section-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--blue-600);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin: 24px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--slate-100);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.careers-form-panel .form-section-title:first-of-type {
+  margin-top: 10px;
+}
+
+/* Forzar que los labels sean oscuros y perfectamente legibles */
+.careers-form-panel .form-group label {
+  display: flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  color: var(--navy-950) !important;
+  margin-bottom: 8px !important;
+}
+
+.careers-form-panel .req-star {
+  color: #dc2626 !important;
+  font-weight: 800 !important;
+}
+
+/* Forzar que los campos de entrada sean blancos con borde contrastante y texto oscuro */
+.careers-form-panel .form-control {
+  width: 100% !important;
+  background-color: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 8px !important;
+  color: #0f172a !important;
+  font-size: 0.95rem !important;
+  font-weight: 500 !important;
+  padding: 12px 14px !important;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05) !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.careers-form-panel .form-control::placeholder {
+  color: #94a3b8 !important;
+  font-weight: 400 !important;
+}
+
+.careers-form-panel .form-control:focus {
+  background-color: #ffffff !important;
+  border-color: var(--blue-500) !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2) !important;
+  outline: none !important;
+}
+
+.careers-form-panel select.form-control {
+  cursor: pointer;
+}
+
+.careers-form-panel select.form-control option {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  font-size: 0.92rem !important;
+  padding: 10px !important;
+}
+
+/* Input con Icono */
+.careers-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.careers-input-wrap .input-icon {
+  position: absolute;
+  left: 14px;
+  width: 18px;
+  height: 18px;
+  color: var(--blue-500);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.careers-input-wrap .form-control {
+  padding-left: 42px !important;
+}
+
+/* Área de Carga de Archivo (Hoja de Vida) */
+.file-upload-box {
+  border: 2px dashed #93c5fd;
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.file-upload-box:hover,
+.file-upload-box.dragover {
+  border-color: var(--blue-500);
+  background: var(--blue-50);
+}
+
+.file-upload-box input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.file-upload-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--blue-100);
+  color: var(--blue-600);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 8px;
 }
 
+.file-upload-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy-900);
+  margin-bottom: 4px;
+}
+
+.file-upload-hint {
+  font-size: 0.78rem;
+  color: var(--slate-500);
+}
+
+.file-selected-status {
+  margin-top: 10px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #dcfce7;
+  border: 1px solid #86efac;
+  border-radius: 6px;
+  color: #166534;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
 .careers-notice-box {
-  background: rgba(2, 132, 199, 0.06);
-  border: 1px dashed var(--blue-400);
+  background: rgba(2, 132, 199, 0.08);
+  border: 1px solid rgba(2, 132, 199, 0.3);
   border-radius: var(--radius-sm);
   padding: 14px 18px;
   margin-bottom: 24px;
   font-size: 0.84rem;
-  color: var(--slate-700);
+  color: var(--navy-900);
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 12px;
 }
 
 .careers-notice-box .lucide {
-  color: var(--blue-500);
-  width: 18px;
-  height: 18px;
+  color: var(--blue-600);
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -2467,4 +2651,5 @@ textarea:focus-visible {
     grid-template-columns: 1fr;
   }
 }
+
 
