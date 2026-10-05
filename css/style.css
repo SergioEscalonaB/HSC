@@ -1728,6 +1728,11 @@ ul {
   transition: all var(--transition-fast);
 }
 
+.client-logo-item img.client-logo-grandecito {
+  max-height: 80px;
+  max-width: 95%;
+}
+
 .client-logo-item:hover img {
   filter: grayscale(0%) opacity(1);
   transform: scale(1.08);
