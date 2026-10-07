@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap oficial para indexación en Google y buscadores
+Sitemap: https://hscservicioseingenieria.com/sitemap.xml

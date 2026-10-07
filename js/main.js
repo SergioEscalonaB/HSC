@@ -356,17 +356,18 @@ function initContactForm() {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const name = form.querySelector("#contact-name").value.trim();
-    const company = form.querySelector("#contact-company").value.trim();
-    const service = form.querySelector("#contact-service").value;
+    const company = form.querySelector("#contact-company")?.value.trim() || "";
     const phone = form.querySelector("#contact-phone").value.trim();
-    const message = form.querySelector("#contact-message").value.trim();
+    const message = form.querySelector("#contact-message")?.value.trim() || "";
+    const serviceEl = form.querySelector("#contact-service");
+    const service = serviceEl ? serviceEl.value : "";
 
     // Construct WhatsApp message
     let text = `*SOLICITUD DE COTIZACIÓN - HSC*\n\n`;
     text += `*Nombre:* ${name}\n`;
     if (company) text += `*Empresa:* ${company}\n`;
-    text += `*Servicio de interés:* ${service}\n`;
     text += `*Teléfono:* ${phone}\n`;
+    if (service) text += `*Servicio de interés:* ${service}\n`;
     if (message) text += `*Mensaje:* ${message}\n`;
 
     const encodedText = encodeURIComponent(text);
