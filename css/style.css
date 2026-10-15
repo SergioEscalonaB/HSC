@@ -1679,6 +1679,7 @@ ul {
   background: var(--slate-100);
   border-top: 1px solid var(--slate-200);
   border-bottom: 1px solid var(--slate-200);
+  overflow-x: clip;
 }
 
 .clients-quote-banner {
@@ -1698,8 +1699,9 @@ ul {
 
 .clients-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 20px;
+  width: 100%;
 }
 
 .client-logo-item {
@@ -1712,6 +1714,8 @@ ul {
   justify-content: center;
   aspect-ratio: 16 / 9;
   transition: all var(--transition-fast);
+  min-width: 0;
+  overflow: hidden;
 }
 
 .client-logo-item:hover {
@@ -1721,6 +1725,7 @@ ul {
 }
 
 .client-logo-item img {
+  width: auto;
   max-height: 50px;
   max-width: 85%;
   object-fit: contain;
@@ -2248,7 +2253,7 @@ textarea:focus-visible {
     grid-template-columns: repeat(2, 1fr);
   }
   .clients-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
   .footer-top-grid {
     grid-template-columns: 1fr 1fr;
@@ -2327,7 +2332,11 @@ textarea:focus-visible {
     grid-template-columns: 1fr;
   }
   .clients-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .client-logo-item {
+    padding: 12px;
   }
   .form-row {
     grid-template-columns: 1fr;
