@@ -254,10 +254,13 @@ function initLightbox() {
   async function findGalleryImages(source) {
     const folder = source.slice(0, source.lastIndexOf("/") + 1);
     const candidates = [source];
+    const extensions = [".jpg", ".jpeg", ".png", ".webp"];
 
-    // Fotos adicionales: guárdelas como foto-5.jpg, foto-6.jpg, etc.
+    // Fotos adicionales: guárdelas como foto-1, foto-2, etc. en formato .jpg o .jpeg
     for (let number = 1; number <= 24; number += 1) {
-      candidates.push(`${folder}foto-${number}.jpg`);
+      extensions.forEach((ext) => {
+        candidates.push(`${folder}foto-${number}${ext}`);
+      });
     }
 
     const uniqueCandidates = [...new Set(candidates)];
@@ -378,14 +381,36 @@ function initContactForm() {
 
 /* Keep missing editorial photography intentional until the real files arrive. */
 function initImageFallbacks() {
+  const alternateExtensions = [".jpeg", ".jpg", ".png", ".webp"];
+
   document.querySelectorAll(".photo-slot img").forEach((image) => {
-    const markAsMissing = () => {
+    const originalSrc = image.getAttribute("src") || "";
+    const lastDot = originalSrc.lastIndexOf(".");
+    const basePath = lastDot !== -1 ? originalSrc.substring(0, lastDot) : originalSrc;
+    const currentExt = lastDot !== -1 ? originalSrc.substring(lastDot).toLowerCase() : "";
+
+    const candidateExts = alternateExtensions.filter((ext) => ext.toLowerCase() !== currentExt);
+    let nextExtIndex = 0;
+
+    const tryNextOrMarkMissing = () => {
+      if (nextExtIndex < candidateExts.length) {
+        const nextSrc = basePath + candidateExts[nextExtIndex];
+        nextExtIndex += 1;
+        image.src = nextSrc;
+        const slot = image.closest(".photo-slot");
+        if (slot) {
+          slot.setAttribute("data-path", nextSrc);
+        }
+        return;
+      }
       image.hidden = true;
       image.closest(".photo-slot")?.classList.add("image-missing");
     };
 
-    image.addEventListener("error", markAsMissing);
-    if (image.complete && image.naturalWidth === 0) markAsMissing();
+    image.addEventListener("error", tryNextOrMarkMissing);
+    if (image.complete && image.naturalWidth === 0) {
+      tryNextOrMarkMissing();
+    }
   });
 }
 
