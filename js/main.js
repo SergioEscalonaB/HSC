@@ -371,7 +371,7 @@ function initContactForm() {
     if (message) text += `*Mensaje:* ${message}\n`;
 
     const encodedText = encodeURIComponent(text);
-    const whatsappUrl = `https://wa.me/573001234567?text=${encodedText}`;
+    const whatsappUrl = `https://wa.me/573012886951?text=${encodedText}`;
     window.open(whatsappUrl, "_blank", "noopener");
   });
 }
